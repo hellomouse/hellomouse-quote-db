@@ -1,0 +1,19 @@
+{
+  "name": "hellomouse-quote-db",
+  "version": "1.0.0",
+  "description": "Quote website for hellomouse group",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bowserinator",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-google": "^0.9.1"
+  },
+  "dependencies": {
+    "express": "^4.16.3",
+    "winston": "^2.4.2"
+  }
+}
