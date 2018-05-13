@@ -13,7 +13,7 @@ const https = require('https');
 const winston = require('winston');
 
 const config = require('./config.js');
-
+const quote_route = require('./routes/quote.js');
 
 /* Server and app */
 const app = express();
@@ -33,7 +33,6 @@ if (config.https_enabled) {
         key: fs.readFileSync(config.https.key),
         cert: fs.readFileSync(config.https.cert)
     };
-
     let https_server = https.createServer(ssl_options, app);
 
     https_server.listen(config.port, function() {

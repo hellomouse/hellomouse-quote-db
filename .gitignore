@@ -69,3 +69,6 @@ typings/
 
 # JSDoc output
 out/*
+
+# DB password file
+db-password.txt
