@@ -18,12 +18,13 @@ const quote_route = require('./routes/quote.js');
 /* Server and app */
 const app = express();
 
+
 /* Try to create the HTTP server */
-if( config.http ){
+if (config.http) {
     let http_server = http.createServer(app);
 
     http_server.listen(config.http_port, function() {
-        winston.log('HTTP Server Listening - http://localhost:' + config.http.port + '\n');
+        winston.info('HTTP Server Listening - http://localhost:' + config.http.port + '\n');
     });
 }
 
@@ -36,6 +37,6 @@ if (config.https_enabled) {
     let https_server = https.createServer(ssl_options, app);
 
     https_server.listen(config.port, function() {
-        winston.log('HTTPS Server Listening - http://localhost:' + config.https.port + '\n');
+        winston.info('HTTPS Server Listening - http://localhost:' + config.https.port + '\n');
     });
 }

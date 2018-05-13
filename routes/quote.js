@@ -1,7 +1,7 @@
 'use strict';
 
 const express = require('express');
-const db = require('../db/index.js');
+const addQuote = require('../src/add-quote.js');
 
 let router = express.Router();
 
