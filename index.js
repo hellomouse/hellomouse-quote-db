@@ -8,8 +8,6 @@ process.title = 'hellomouse-quote-db';
 /* Requires */
 const express = require('express');
 const fs = require('fs');
-const http = require('http');
-const https = require('https');
 const winston = require('winston');
 
 const config = require('./config.js');
@@ -18,25 +16,21 @@ const quote_route = require('./routes/quote.js');
 /* Server and app */
 const app = express();
 
+app.use(quote_route);
 
-/* Try to create the HTTP server */
-if (config.http) {
-    let http_server = http.createServer(app);
+app.get('/users', function(req, res, next) {
 
-    http_server.listen(config.http_port, function() {
-        winston.info('HTTP Server Listening - http://localhost:' + config.http.port + '\n');
-    });
-}
+  // And insert something like this instead:
+  res.json([{
+  	id: 1,
+  	username: "samsepi0l"
+  }, {
+  	id: 2,
+  	username: "D0loresH4ze"
+  }]);
+});
 
-/* Try to create the HTTPS server */
-if (config.https_enabled) {
-    let ssl_options = {
-        key: fs.readFileSync(config.https.key),
-        cert: fs.readFileSync(config.https.cert)
-    };
-    let https_server = https.createServer(ssl_options, app);
 
-    https_server.listen(config.port, function() {
-        winston.info('HTTPS Server Listening - http://localhost:' + config.https.port + '\n');
-    });
-}
+app.listen(config.port, function () {
+    console.log(`Example app listening on port ${config.port}`);
+});

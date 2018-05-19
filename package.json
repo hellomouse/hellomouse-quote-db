@@ -4,19 +4,26 @@
   "description": "Quote website for hellomouse group",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "PORT=8201 react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   },
   "author": "Bowserinator",
   "license": "MIT",
   "devDependencies": {
     "eslint": "^4.19.1",
-    "eslint-config-google": "^0.9.1"
+    "eslint-config-google": "^0.9.1",
+    "react-scripts": "^1.1.4"
   },
   "dependencies": {
     "express": "^4.16.3",
+    "format-date": "^1.0.0",
     "pg": "^7.4.3",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
+    "react-mdc-web": "^0.17.0",
     "winston": "^2.4.2"
-  }
+  },
+  "proxy": "http://localhost:8200"
 }

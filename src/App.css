@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Dosis');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300');
+
+.App {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+}
+
+.fab {
+    font-size: 24px;
+    background-color: #FF5252;
+    color: white;
+
+    right: 70px;
+    bottom: 70px;
+}
