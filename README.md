@@ -1,6 +1,7 @@
 # hellomouse-quote-db
 
 ![Example quote](https://i.imgur.com/QjBlwEX.png "Quote example")
+
 A website for IRC quotes for hellmouse.
 
 
