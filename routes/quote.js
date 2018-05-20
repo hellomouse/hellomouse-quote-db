@@ -57,16 +57,10 @@ router.get('/get_quote/:id', function(req, res) {
      * To get a quote by id, do
      * /get_quote/<id> */
     let id = req.params.id;
+    let query = `SELECT * FROM ${config.db.table_name} where id = $1::int`;
 
-    /* Only allow numbers */
-    if (isNaN(id)) {
-        res.json({ success: false });
-        return;
-    }
-
-    let query = `SELECT * FROM ${config.db.table_name} where id = '${id}'`;
-
-    db.query(query, (err, db_res) => {
+    db.query(query, [id], (err, db_res) => {
+        console.log(err ? err.stack : '');
         if (err || db_res.rows.length === 0) {
             res.json({ success: false });
         } else {
