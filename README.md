@@ -52,6 +52,7 @@ These checks are defined in `routes/quote.js`
 ```
 <your server>:<react port>/page_n    Access nth page
 <your server>:<react port>/quote_n   Access a specific quote by id
+<your server>:<react port>/add_quote Add a quote
 
 <your server>:<express port>/get_quote/n       Get info for nth quote
 <your server>:<express port>/get_quote_page/n  Get quotes in nth page
