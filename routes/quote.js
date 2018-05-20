@@ -57,6 +57,13 @@ router.get('/get_quote/:id', function(req, res) {
      * To get a quote by id, do
      * /get_quote/<id> */
     let id = req.params.id;
+
+    /* Only allow numbers */
+    if (isNaN(id)) {
+        res.json({ success: false });
+        return;
+    }
+
     let query = `SELECT * FROM ${config.db.table_name} where id = '${id}'`;
 
     db.query(query, (err, db_res) => {
@@ -82,9 +89,9 @@ router.get('/get_quote_page/:page', function(req, res) {
     let start_id = page * config.quotes_per_page + 1;
     let end_id = config.quotes_per_page * (page + 1) + 1;
 
-    let query = `SELECT * FROM ${config.db.table_name} where id >= ${start_id} and id < ${end_id}`;
+    let query = `SELECT * FROM ${config.db.table_name} where id >= $1 and id < $2`;
 
-    db.query(query, (err, db_res) => {
+    db.query(query, [start_id, end_id], (err, db_res) => {
         if (err || db_res.rows.length === 0) {
             res.json({ success: false });
         } else {
