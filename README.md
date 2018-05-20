@@ -1,7 +1,6 @@
 # hellomouse-quote-db
 
 ![Example quote](https://i.imgur.com/QjBlwEX.png "Quote example")
-
 A website for IRC quotes for hellmouse.
 
 
@@ -46,6 +45,22 @@ Before adding a new quote to the table, the server does the following checks:
 
 These checks are defined in `routes/quote.js`
 
+## Pages
+```
+<your server>:<react port>/page_n    Access nth page
+<your server>:<react port>/quote_n   Access a specific quote by id
+
+<your server>:<express port>/get_quote/n       Get info for nth quote
+<your server>:<express port>/get_quote_page/n  Get quotes in nth page
+<your server>:<express port>/num_pages/        Get number of pages
+
+<your server>:<express port>/add_quote    Send a POST with a json payload:
+     {
+          poster: <whoever posted it>,
+          channel: <channel, ie #test>,
+          content: <quote content>
+    }
+```
 
 ## Install
 
