@@ -29,16 +29,20 @@ router.post('/add_quote/', async function(req, res) {
     try {
         if (!req.body.channel || !isAscii(req.body.channel) || !req.body.channel.startsWith('#')) {
             returnJSONResponse(res, "Channel name must be ASCII and start with '#'", false);
-
-            return;
+        } else if (req.body.channel.length > 25) {
+            returnJSONResponse(res, 'Channel name cannot be larger than 25 characters', false);
         } else if (!req.body.poster || !isAscii(req.body.poster)) {
             returnJSONResponse(res, 'Username must be ASCII', false);
-
-            return;
+        } else if (req.body.poster.length > 16) {
+            returnJSONResponse(res, 'Username must be of length 16 or less', false);
+        } else if (!req.body.content) {
+            returnJSONResponse(res, 'You must provide a quote', false);
+        } else if (req.body.content.length > 10000) {
+            returnJSONResponse(res, 'Quote must be less than 10000 characters', false);
+        } else {
+            addQuote(req.body.channel, req.body.poster, req.body.content);
+            returnJSONResponse(res, 'Quote posted!', true);
         }
-
-        addQuote(req.body.channel, req.body.poster, req.body.content);
-        returnJSONResponse(res, 'Quote posted!', true);
     } catch(e) {
         returnJSONResponse(res, 'An error occured while posting the quote', false);
     }
