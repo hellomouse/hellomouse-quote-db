@@ -8,8 +8,38 @@ const config = require('../config.js');
 let router = express.Router();
 
 
-router.post('/add_quote', async function(req, res) {
+router.post('/add_quote/', async function(req, res) {
+    try {
+        console.log(req.body)
+        if (!req.body.channel || !/^[\x00-\x7F]*$/.test(req.body.channel) || !req.body.channel.startsWith('#')) {
+            res.json({
+                success: false,
+                message: "Channel name must be ASCII and start with '#'"
+            });
+            res.end();
+            return;
+        } else if (!req.body.poster || !/^[\x00-\x7F]*$/.test(req.body.poster)) {
+            res.json({
+                success: false,
+                message: 'Username must be ASCII'
+            });
+            res.end();
+            return;
+        }
 
+        addQuote(req.body.channel, req.body.poster, req.body.content);
+        res.json({
+            success: true,
+            message: 'Quote posted!'
+        });
+        res.end();
+    } catch(e) {
+        res.json({
+            success: false,
+            message: "An error occured while posting the quote"
+        });
+        res.end();
+    }
 });
 
 router.get('/get_quote/*', function(req, res) {
@@ -54,6 +84,7 @@ router.get('/get_quote_page/*', function(req, res) {
 
     db.query(query, (err, db_res) => {
         if (err || db_res.rows.length === 0) {
+            console.log(err, db_res)
             res.json({ success: false });
         } else {
             db_res = { quotes: db_res.rows };

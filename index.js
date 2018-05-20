@@ -9,6 +9,7 @@ process.title = 'hellomouse-quote-db';
 const express = require('express');
 const fs = require('fs');
 const winston = require('winston');
+const bodyParser = require('body-parser');
 
 const config = require('./config.js');
 const quote_route = require('./routes/quote.js');
@@ -16,6 +17,7 @@ const quote_route = require('./routes/quote.js');
 /* Server and app */
 const app = express();
 
+app.use(bodyParser.json());
 app.use(quote_route);
 
 app.get('/users', function(req, res, next) {

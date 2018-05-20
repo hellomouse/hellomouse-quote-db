@@ -15,8 +15,8 @@ VALUES ($1, $2, $3, $4) RETURNING *`;
  */
 function addQuote(channel, poster, content){
     db.query(query, [channel, poster, content, new Date()], err => {
+        console.log(err)
         if (err) throw err;
-        db.end();
     });
 }
 
