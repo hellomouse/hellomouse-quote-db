@@ -13,7 +13,8 @@ class AddQuoteModal extends Component {
             username: '',
             channel: '',
             quote: '',
-            error_msg: ''
+            error_msg: '',
+            success_msg: ''
         };
 
         this.addQuote = this.addQuote.bind(this);
@@ -37,6 +38,14 @@ class AddQuoteModal extends Component {
                 let curr_state = this.state;
                 curr_state.error_msg = res.message;
                 this.setState(curr_state);
+            } else {
+                let curr_state = this.state;
+                curr_state.success_msg = res.message;
+                this.setState(curr_state);
+
+                setTimeout(() => {
+                    window.history.back();
+                }, 1000)
             }
         });
     }
@@ -48,6 +57,10 @@ class AddQuoteModal extends Component {
 
                 {this.state.error_msg ? (
                     <div className='error'><b>Error: </b>{this.state.error_msg}</div>
+                ) : ''}
+
+                {this.state.success_msg ? (
+                    <div className='success'><b>Success: </b>{this.state.success_msg}</div>
                 ) : ''}
 
                 <Textfield
