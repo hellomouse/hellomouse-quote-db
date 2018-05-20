@@ -40,7 +40,7 @@ router.post('/add_quote/', async function(req, res) {
         } else if (req.body.content.length > 10000) {
             returnJSONResponse(res, 'Quote must be less than 10000 characters', false);
         } else {
-            addQuote(req.body.channel, req.body.poster, req.body.content);
+            await addQuote(req.body.channel, req.body.poster, req.body.content);
             returnJSONResponse(res, 'Quote posted!', true);
         }
     } catch(e) {
