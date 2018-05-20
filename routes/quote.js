@@ -78,7 +78,7 @@ router.get('/get_quote_page/:page', function(req, res) {
      *
      * To get quotes for a page, do
      * /get_quote/page */
-    let page = req.params.page;
+    let page = +req.params.page - 1;
     let start_id = page * config.quotes_per_page + 1;
     let end_id = config.quotes_per_page * (page + 1) + 1;
 

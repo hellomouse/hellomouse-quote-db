@@ -35,13 +35,9 @@ class AddQuoteModal extends Component {
         }).then(res => res.json())
           .then(res => {
             if (!res.success) {
-                let curr_state = this.state;
-                curr_state.error_msg = res.message;
-                this.setState(curr_state);
+                this.setState({ error_msg: res.message });
             } else {
-                let curr_state = this.state;
-                curr_state.success_msg = res.message;
-                this.setState(curr_state);
+                this.setState({ success_msg: res.message });
 
                 setTimeout(() => {
                     window.history.back();
