@@ -1,5 +1,6 @@
 'use strict';
 
+const isAscii = require('is-ascii');
 const express = require('express');
 const addQuote = require('../src/add-quote.js');
 const db = require('../db/index.js');
@@ -8,37 +9,38 @@ const config = require('../config.js');
 let router = express.Router();
 
 
+/**
+ * returnJSONResponse - description
+ *
+ * @param  {Response} res     Res object, as given by the callback
+ * @param  {string} message   Message to send
+ * @param  {boolean} success  Did the request work?
+ */
+function returnJSONResponse(res, message, success) {
+    res.json({
+        success: success,
+        message: message
+    });
+    res.end();
+}
+
+
 router.post('/add_quote/', async function(req, res) {
     try {
-        console.log(req.body)
-        if (!req.body.channel || !/^[\x00-\x7F]*$/.test(req.body.channel) || !req.body.channel.startsWith('#')) {
-            res.json({
-                success: false,
-                message: "Channel name must be ASCII and start with '#'"
-            });
-            res.end();
+        if (!req.body.channel || !isAscii(req.body.channel) || !req.body.channel.startsWith('#')) {
+            returnJSONResponse(res, "Channel name must be ASCII and start with '#'", false);
+
             return;
-        } else if (!req.body.poster || !/^[\x00-\x7F]*$/.test(req.body.poster)) {
-            res.json({
-                success: false,
-                message: 'Username must be ASCII'
-            });
-            res.end();
+        } else if (!req.body.poster || !isAscii(req.body.poster)) {
+            returnJSONResponse(res, 'Username must be ASCII', false);
+
             return;
         }
 
         addQuote(req.body.channel, req.body.poster, req.body.content);
-        res.json({
-            success: true,
-            message: 'Quote posted!'
-        });
-        res.end();
+        returnJSONResponse(res, 'Quote posted!', true);
     } catch(e) {
-        res.json({
-            success: false,
-            message: "An error occured while posting the quote"
-        });
-        res.end();
+        returnJSONResponse(res, 'An error occured while posting the quote', false);
     }
 });
 
@@ -51,6 +53,7 @@ router.get('/get_quote/*', function(req, res) {
      * To get a quote by id, do
      * /get_quote/<id> */
     let id = req.url.split('/');
+
     id = id[id.length - 1];
 
     let query = `SELECT * FROM ${config.db.table_name} where id = '${id}'`;
@@ -75,6 +78,7 @@ router.get('/get_quote_page/*', function(req, res) {
      * To get quotes for a page, do
      * /get_quote/page */
     let page = req.url.split('/');
+
     page = +page[page.length - 1] - 1;
 
     let start_id = page * config.quotes_per_page + 1;
@@ -84,7 +88,6 @@ router.get('/get_quote_page/*', function(req, res) {
 
     db.query(query, (err, db_res) => {
         if (err || db_res.rows.length === 0) {
-            console.log(err, db_res)
             res.json({ success: false });
         } else {
             db_res = { quotes: db_res.rows };

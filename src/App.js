@@ -17,7 +17,7 @@ class App extends Component {
                     <ToolbarRow>
                         <ToolbarSection align="start">
                             <ToolbarTitle>
-                                	💬 Hellomouse Quote DB
+                                💬 Hellomouse Quote DB
                             </ToolbarTitle>
                         </ToolbarSection>
                     </ToolbarRow>
@@ -27,7 +27,7 @@ class App extends Component {
                     <AddQuoteModal></AddQuoteModal>
                 ) : (
                     <div>
-                        <div style={{ height: '50px' }}></div>
+                        <div style={{ height: '70px' }}></div>
                         <DisplayQuote></DisplayQuote>
                     </div>
                 )}
