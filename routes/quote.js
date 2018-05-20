@@ -60,7 +60,6 @@ router.get('/get_quote/:id', function(req, res) {
     let query = `SELECT * FROM ${config.db.table_name} where id = $1::int`;
 
     db.query(query, [id], (err, db_res) => {
-        console.log(err ? err.stack : '');
         if (err || db_res.rows.length === 0) {
             res.json({ success: false });
         } else {
