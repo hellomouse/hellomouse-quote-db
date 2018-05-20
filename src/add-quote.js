@@ -14,9 +14,7 @@ VALUES ($1, $2, $3, $4) RETURNING *`;
  * @param  {string} content The quote itself
  */
 async function addQuote(channel, poster, content){
-    db.query(query, [channel, poster, content, new Date()], err => {
-        if (err) throw err;
-    });
+    await db.query(query, [channel, poster, content, new Date()]);
 }
 
 module.exports = addQuote;

@@ -48,7 +48,7 @@ router.post('/add_quote/', async function(req, res) {
     }
 });
 
-router.get('/get_quote/*', function(req, res) {
+router.get('/get_quote/:id', function(req, res) {
     /* Returns a JSON object representing the
      * quote object. For example
      *
@@ -56,10 +56,7 @@ router.get('/get_quote/*', function(req, res) {
      *
      * To get a quote by id, do
      * /get_quote/<id> */
-    let id = req.url.split('/');
-
-    id = id[id.length - 1];
-
+    let id = req.params.id;
     let query = `SELECT * FROM ${config.db.table_name} where id = '${id}'`;
 
     db.query(query, (err, db_res) => {
@@ -73,7 +70,7 @@ router.get('/get_quote/*', function(req, res) {
     });
 });
 
-router.get('/get_quote_page/*', function(req, res) {
+router.get('/get_quote_page/:page', function(req, res) {
     /* Returns a JSON object representing the
      * quotes. For example
      *
@@ -81,10 +78,7 @@ router.get('/get_quote_page/*', function(req, res) {
      *
      * To get quotes for a page, do
      * /get_quote/page */
-    let page = req.url.split('/');
-
-    page = +page[page.length - 1] - 1;
-
+    let page = req.params.page;
     let start_id = page * config.quotes_per_page + 1;
     let end_id = config.quotes_per_page * (page + 1) + 1;
 
