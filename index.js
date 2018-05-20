@@ -21,5 +21,5 @@ app.use(quote_route);
 
 
 app.listen(config.port, function () {
-    winston.log(`Example app listening on port ${config.port}`);
+    winston.info(`Example app listening on port ${config.port}`);
 });
