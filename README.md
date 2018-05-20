@@ -3,6 +3,7 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/066360820bb843ab8cc97ccf47c5d2d4)](https://www.codacy.com/app/Bowserinator/hellomouse-quote-db?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=hellomouse/hellomouse-quote-db&amp;utm_campaign=Badge_Grade)
 
 ![Example quote](https://i.imgur.com/QjBlwEX.png "Quote example")
+
 A website for IRC quotes for hellmouse.
 
 
@@ -61,7 +62,7 @@ These checks are defined in `routes/quote.js`
           poster: <whoever posted it>,
           channel: <channel, ie #test>,
           content: <quote content>
-    }
+     }
 ```
 
 ## Install
