@@ -6,10 +6,14 @@ import 'material-components-web/dist/material-components-web.min.css';
 import './css/App.css';
 import {Button, Fab} from 'react-mdc-web/lib';
 
-
+/** Component to display quotes */
 class DisplayQuote extends Component {
     state = { quotes: [] };
 
+    /**
+     * Returns page or quote number
+     * @returns {Object<string, string | number}
+     */
     getNumber() {
         let suffix = document.location.href.split('/');
         suffix = suffix[suffix.length - 1];
@@ -36,6 +40,7 @@ class DisplayQuote extends Component {
         }
     }
 
+    /** Function that runs when the component is mounted */
     componentDidMount() {
         let data = this.getNumber();
 
@@ -72,6 +77,9 @@ class DisplayQuote extends Component {
         }
     }
 
+    /**
+      * @returns {React.ReactElement}
+     */
     render() {
         let current_page = this.getNumber().value;
         let prev_page = current_page - 1;
