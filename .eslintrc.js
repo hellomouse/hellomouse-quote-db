@@ -10,6 +10,7 @@ module.exports = {
             "experimentalObjectRestSpread": true
         }
     },
+    "parser": "babel-eslint",
     "extends": ["eslint:recommended"],
     "rules": {
         "require-jsdoc": [
