@@ -4,7 +4,7 @@ import Quote from './Quote.js';
 
 import 'material-components-web/dist/material-components-web.min.css';
 import './css/App.css';
-import {Button, Fab} from 'react-mdc-web/lib';
+import {Button, Fab, Icon} from 'react-mdc-web/lib';
 
 
 class DisplayQuote extends Component {
@@ -95,7 +95,7 @@ class DisplayQuote extends Component {
                     </span>
                 ) : ''}
 
-                <button className='mdc-fab fab' style={{ position: 'fixed' }} onClick={() => {window.location.href = '/add_quote'}}>✎</button>
+                <Fab style={{ position: 'fixed' }} onClick={() => {window.location.href = '/add_quote'}}><Icon name='create'/></Fab>
             </div>
         );
     }
