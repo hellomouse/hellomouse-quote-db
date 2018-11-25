@@ -1,7 +1,8 @@
 module.exports = {
     "env": {
         "es6": true,
-        "node": true
+        "node": true,
+        "browser": true
     },
     "parserOptions": {
         "ecmaVersion": 8,
@@ -10,6 +11,7 @@ module.exports = {
             "experimentalObjectRestSpread": true
         }
     },
+    "parser": "babel-eslint",
     "extends": ["eslint:recommended"],
     "rules": {
         "require-jsdoc": [

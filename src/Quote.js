@@ -4,18 +4,19 @@ import './css/Quote.css';
 const formatDate = require('format-date');
 
 
+/** */
 class Quote extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            poster: props.poster,
-            content: props.content,
-            timestamp: props.timestamp,
-            id: props.id,
-            channel: props.channel
-        };
-    }
+    state = {
+        poster: this.props.poster,
+        content: this.props.content,
+        timestamp: this.props.timestamp,
+        id: this.props.id,
+        channel: this.props.channel
+    };
 
+    /**
+     * @returns {React.ReactElement}
+     */
     render() {
         return (
             <div className='quote'>

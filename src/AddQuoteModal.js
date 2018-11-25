@@ -4,23 +4,17 @@ import 'material-components-web/dist/material-components-web.min.css';
 import './css/AddQuoteModal.css';
 import {Button, Textfield} from 'react-mdc-web/lib';
 
-
+/** */
 class AddQuoteModal extends Component {
-    constructor (props){
-        super(props);
+    state = {
+        username: '',
+        channel: '',
+        quote: '',
+        error_msg: '',
+        success_msg: ''
+    };
 
-        this.state = {
-            username: '',
-            channel: '',
-            quote: '',
-            error_msg: '',
-            success_msg: ''
-        };
-
-        this.addQuote = this.addQuote.bind(this);
-    }
-
-    addQuote() {
+    addQuote = () => {
         fetch('/add_quote/', {
             method: 'POST',
             headers: {
@@ -46,6 +40,9 @@ class AddQuoteModal extends Component {
         });
     }
 
+    /**
+     * @returns {React.ReactElement}
+     */
     render() {
         return (
             <div className="modal">

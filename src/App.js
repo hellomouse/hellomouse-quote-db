@@ -9,7 +9,11 @@ import './css/App.css';
 import {Toolbar, ToolbarRow, ToolbarTitle, ToolbarSection} from 'react-mdc-web/lib';
 
 
+/** */
 class App extends Component {
+    /**
+     * @returns {React.ReactElement}
+     */
     render() {
         return (
             <div className="App">
@@ -17,7 +21,7 @@ class App extends Component {
                     <ToolbarRow>
                         <ToolbarSection align="start">
                             <ToolbarTitle>
-                                💬 Hellomouse Quote DB
+                                <span role="img">💬</span> Hellomouse Quote DB
                             </ToolbarTitle>
                         </ToolbarSection>
                     </ToolbarRow>
