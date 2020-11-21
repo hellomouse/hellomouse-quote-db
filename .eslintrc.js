@@ -12,7 +12,7 @@ module.exports = {
     }
   },
   parser: 'babel-eslint',
-  extends: ['eslint:recommended', '@hellomouse'],
+  extends: ['eslint:recommended', 'react-app', '@hellomouse'],
   rules: {
     'padded-blocks': [
       'error',
