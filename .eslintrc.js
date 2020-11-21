@@ -1,28 +1,28 @@
 module.exports = {
-    "env": {
-        "es6": true,
-        "node": true,
-        "browser": true
+    env: {
+        es6: true,
+        node: true,
+        browser: true
     },
-    "parserOptions": {
-        "ecmaVersion": 8,
-        "sourceType": "module",
-        "ecmaFeatures": {
-            "experimentalObjectRestSpread": true
+    parserOptions: {
+        ecmaVersion: 8,
+        sourceType: "module",
+        ecmaFeatures: {
+            experimentalObjectRestSpread: true
         }
     },
-    "parser": "babel-eslint",
-    "extends": ["eslint:recommended"],
-    "rules": {
+    parser: "babel-eslint",
+    extends: ["eslint:recommended"],
+    rules: {
         "require-jsdoc": [
             "warn",
             {
-                "require": {
-                    "FunctionDeclaration": true,
-                    "MethodDefinition": true,
-                    "ClassDeclaration": true,
-                    "ArrowFunctionExpression": true,
-                    "FunctionExpression": true
+                require: {
+                    FunctionDeclaration: true,
+                    MethodDefinition: true,
+                    ClassDeclaration: true,
+                    ArrowFunctionExpression: true,
+                    FunctionExpression: true
                 }
             }
         ],
@@ -33,7 +33,7 @@ module.exports = {
         "padded-blocks": [
             "error",
             {
-                "blocks": "never"
+                blocks: "never"
             }
         ],
         "arrow-parens": [
@@ -41,19 +41,19 @@ module.exports = {
             "as-needed"
         ],
         "one-var": "off",
-        "camelcase": "off",
+        camelcase: "off",
         "max-len": [
             "error",
             {
-                "code": 120,
-                "tabWidth": 4,
-                "ignoreComments": true,
-                "ignoreTrailingComments": true,
-                "ignoreUrls": true
+                code: 120,
+                tabWidth: 4,
+                ignoreComments: true,
+                ignoreTrailingComments: true,
+                ignoreUrls: true
             }
         ],
         "id-match": "off", // Google sets this
-        "curly": "off", // Can't configure this enough
+        curly: "off", // Can't configure this enough
         "block-spacing": [
             "error",
             "always"
@@ -62,7 +62,7 @@ module.exports = {
             "error",
             "1tbs",
             {
-                "allowSingleLine": true
+                allowSingleLine: true
             }
         ],
         "object-curly-spacing": [
@@ -72,24 +72,24 @@ module.exports = {
         "space-unary-ops": [
             "error",
             {
-                "words": true,
-                "nonwords": false
+                words: true,
+                nonwords: false
             }
         ],
         "padding-line-between-statements": [
             "error",
-            { "blankLine": "always", "prev": "*", "next": "return" },
-            { "blankLine": "always", "prev": ["const", "let"], "next": "*" },
-            { "blankLine": "any", "prev": ["const", "let"], "next": ["const", "let"] }
+            { blankLine: "always", prev: "*", next: "return" },
+            { blankLine: "always", prev: ["const", "let"], next: "*" },
+            { blankLine: "any", prev: ["const", "let"], next: ["const", "let"] }
         ],
-        "eqeqeq": [
+        eqeqeq: [
             "warn",
             "smart"
         ],
         "no-redeclare": [
             "error",
             {
-                "builtinGlobals": true
+                builtinGlobals: true
             }
         ],
         "no-shadow": "error",
@@ -102,7 +102,7 @@ module.exports = {
             "error",
             "as-needed"
         ],
-        "semi": [
+        semi: [
             "error",
             "always"
         ]

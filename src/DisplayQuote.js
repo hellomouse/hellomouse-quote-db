@@ -4,7 +4,7 @@ import Quote from './Quote.js';
 
 import 'material-components-web/dist/material-components-web.min.css';
 import './css/App.css';
-import {Button, Fab, Icon} from 'react-mdc-web/lib';
+import { Button, Fab, Icon } from 'react-mdc-web/lib';
 
 /** Component to display quotes */
 class DisplayQuote extends Component {
@@ -16,6 +16,7 @@ class DisplayQuote extends Component {
      */
     getNumber() {
         let suffix = document.location.href.split('/');
+
         suffix = suffix[suffix.length - 1];
 
         /* Possible suffix list:
@@ -23,6 +24,7 @@ class DisplayQuote extends Component {
          * quote_n - Quote with id n, starting from quote 1 */
         if (suffix.startsWith('page_')) {
             let n = suffix.split('page_')[1];
+
             n = isNaN(n) ? 1 : +n;
 
             return {
@@ -31,6 +33,7 @@ class DisplayQuote extends Component {
             };
         } else if (suffix.startsWith('quote_')) {
             let n = suffix.split('quote_')[1];
+
             n = isNaN(n) ? 1 : +n;
 
             return {
@@ -73,7 +76,7 @@ class DisplayQuote extends Component {
             // Blame the way the state is setup
             fetch('/get_quote/' + n)
                 .then(res => res.json())
-                .then(quote => this.setState({ quotes: { quotes: [quote] }}) );
+                .then(quote => this.setState({ quotes: { quotes: [quote] } }) );
         }
     }
 
@@ -95,15 +98,15 @@ class DisplayQuote extends Component {
 
                 {!this.is_single_quote ? (
                     <span>
-                        <Button dense onClick={() => {window.location.href = '/page_1'}}>⮜</Button>
-                        <Button dense onClick={() => {window.location.href = '/page_' + prev_page}}>{prev_page}</Button>
-                        <Button dense onClick={() => {window.location.href = '/page_' + current_page}}>{current_page}</Button>
-                        <Button dense onClick={() => {window.location.href = '/page_' + next_page}}>{next_page}</Button>
-                        <Button dense onClick={() => {window.location.href = '/page_' + this.last_page}}>⮞</Button>
+                        <Button dense onClick={() => { window.location.href = '/page_1'; }}>⮜</Button>
+                        <Button dense onClick={() => { window.location.href = '/page_' + prev_page; }}>{prev_page}</Button>
+                        <Button dense onClick={() => { window.location.href = '/page_' + current_page; }}>{current_page}</Button>
+                        <Button dense onClick={() => { window.location.href = '/page_' + next_page; }}>{next_page}</Button>
+                        <Button dense onClick={() => { window.location.href = '/page_' + this.last_page; }}>⮞</Button>
                     </span>
                 ) : ''}
 
-                <Fab style={{ position: 'fixed' }} onClick={() => {window.location.href = '/add_quote'}}><Icon name='create'/></Fab>
+                <Fab style={{ position: 'fixed' }} onClick={() => { window.location.href = '/add_quote'; }}><Icon name='create'/></Fab>
             </div>
         );
     }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import 'material-components-web/dist/material-components-web.min.css';
 import './css/AddQuoteModal.css';
-import {Button, Textfield} from 'react-mdc-web/lib';
+import { Button, Textfield } from 'react-mdc-web/lib';
 
 /** */
 class AddQuoteModal extends Component {
@@ -18,8 +18,8 @@ class AddQuoteModal extends Component {
         fetch('/add_quote/', {
             method: 'POST',
             headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 poster: this.state.username,
@@ -35,7 +35,7 @@ class AddQuoteModal extends Component {
 
                 setTimeout(() => {
                     window.history.back();
-                }, 1000)
+                }, 1000);
             }
         });
     }
@@ -60,8 +60,8 @@ class AddQuoteModal extends Component {
                     floatingLabel="IRC Username"
                     required
                     value={this.state.username}
-                    onChange={({ target : {value : username}}) => {
-                        this.setState({ username })
+                    onChange={({ target : { value : username } }) => {
+                        this.setState({ username });
                     }}
                     style={{
                         width: '220px',
@@ -73,8 +73,8 @@ class AddQuoteModal extends Component {
                     floatingLabel="Channel"
                     required
                     value={this.state.channel}
-                    onChange={({ target : {value : channel}}) => {
-                        this.setState({ channel })
+                    onChange={({ target : { value : channel } }) => {
+                        this.setState({ channel });
                     }}
                     style={{ width: '220px' }}
                 />
@@ -85,8 +85,8 @@ class AddQuoteModal extends Component {
                     rows="15"
                     cols="50"
                     value={this.state.quote}
-                    onChange={({target : {value : quote}}) => {
-                        this.setState({ quote })
+                    onChange={({ target : { value : quote } }) => {
+                        this.setState({ quote });
                     }}
                     className="add-quote-textarea"
                 />
@@ -102,7 +102,7 @@ class AddQuoteModal extends Component {
                 </div>
                 <br/>
 
-                <Button onClick={() => {window.history.back()}}>CANCEL</Button>
+                <Button onClick={() => { window.history.back(); }}>CANCEL</Button>
                 <Button onClick={this.addQuote}>ADD QUOTE</Button>
 
             </div>
