@@ -5,7 +5,7 @@ import DisplayQuote from './DisplayQuote.js';
 
 import 'material-components-web/dist/material-components-web.min.css';
 import './css/App.css';
-import { Toolbar, ToolbarRow, ToolbarTitle, ToolbarSection } from 'react-mdc-web/lib';
+import { Toolbar, ToolbarRow, ToolbarTitle, ToolbarSection } from '@material-ui/core';
 
 
 /** */

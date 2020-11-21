@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import 'material-components-web/dist/material-components-web.min.css';
 import './css/AddQuoteModal.css';
-import { Button, Textfield } from 'react-mdc-web/lib';
+import { Button, Textfield } from '@material-ui/core';
 
 /** */
 class AddQuoteModal extends Component {
