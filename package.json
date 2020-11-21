@@ -12,9 +12,9 @@
   "author": "Bowserinator",
   "license": "MIT",
   "devDependencies": {
+    "@hellomouse/eslint-config": "^1.1.5",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.14.0",
-    "eslint-config-google": "^0.14.0",
     "react-scripts": "^4.0.0"
   },
   "dependencies": {
