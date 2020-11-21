@@ -1,4 +1,4 @@
-'use strict';
+
 
 /* Useage:
  * node index.js */
@@ -21,13 +21,13 @@ app.use(bodyParser.json({ limit: '4mb' }));
 app.use(quote_route);
 
 let limiter = new RateLimit({
-    windowMs: 2 * 60 * 1000,
-    max: 15,
-    delayMs: 0
+  windowMs: 2 * 60 * 1000,
+  max: 15,
+  delayMs: 0
 });
 
-app.post("*", limiter);
+app.post('*', limiter);
 
-app.listen(config.port, function () {
-    winston.info(`Example app listening on port ${config.port}`);
+app.listen(config.port, function() {
+  winston.info(`Example app listening on port ${config.port}`);
 });

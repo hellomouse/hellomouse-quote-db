@@ -1,4 +1,4 @@
-'use strict';
+
 
 const db = require('../db/index.js');
 const config = require('../config.js');
@@ -13,8 +13,8 @@ VALUES ($1, $2, $3, $4) RETURNING *`;
  * @param  {string} poster  Person who posted the quote
  * @param  {string} content The quote itself
  */
-async function addQuote(channel, poster, content){
-    await db.query(query, [channel, poster, content, new Date()]);
+async function addQuote(channel, poster, content) {
+  await db.query(query, [channel, poster, content, new Date()]);
 }
 
 module.exports = addQuote;
