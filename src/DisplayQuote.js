@@ -12,7 +12,7 @@ class DisplayQuote extends Component {
 
     /**
      * Returns page or quote number
-     * @return {Object<string, string | number}
+     * @return {object<string, string | number>}
      */
     getNumber() {
       let suffix = document.location.href.split('/');
@@ -48,7 +48,7 @@ class DisplayQuote extends Component {
       let data = this.getNumber();
 
       this.is_single_quote = true;
-      this.current_page = -1;
+      this.currentPage = -1;
 
       /* Possible suffix list:
          * page_n - The nth page, starting from page 1
@@ -57,7 +57,7 @@ class DisplayQuote extends Component {
         let n = data.value;
 
         this.is_single_quote = false;
-        this.current_page = n;
+        this.currentPage = n;
 
         fetch('/get_quote_page/' + n)
           .then(res => res.json())
@@ -84,16 +84,17 @@ class DisplayQuote extends Component {
      * @return {React.ReactElement}
      */
     render() {
-      let current_page = this.getNumber().value;
-      let prev_page = current_page - 1;
-      let next_page = current_page + 1;
+      let currentPage = this.getNumber().value;
+      let prevPage = currentPage - 1;
+      let nextPage = currentPage + 1;
 
-      prev_page = prev_page <= 0 ? '' : prev_page;
+      prevPage = prevPage <= 0 ? '' : prevPage;
 
       return (
         <div>
           {this.state.quotes.quotes ? this.state.quotes.quotes.map(quote =>
-            <Quote id={quote.id} poster={quote.poster} content={quote.content} channel={quote.channel} timestamp={quote.created_on} />
+            <Quote id={quote.id} poster={quote.poster} content={quote.content}
+              channel={quote.channel} timestamp={quote.created_on} />
           ) : ''}
 
           {!this.is_single_quote ? (
@@ -102,14 +103,14 @@ class DisplayQuote extends Component {
                 window.location.href = '/page_1';
               }}>⮜</Button>
               <Button dense onClick={() => {
-                window.location.href = '/page_' + prev_page;
-              }}>{prev_page}</Button>
+                window.location.href = '/page_' + prevPage;
+              }}>{prevPage}</Button>
               <Button dense onClick={() => {
-                window.location.href = '/page_' + current_page;
-              }}>{current_page}</Button>
+                window.location.href = '/page_' + currentPage;
+              }}>{currentPage}</Button>
               <Button dense onClick={() => {
-                window.location.href = '/page_' + next_page;
-              }}>{next_page}</Button>
+                window.location.href = '/page_' + nextPage;
+              }}>{nextPage}</Button>
               <Button dense onClick={() => {
                 window.location.href = '/page_' + this.last_page;
               }}>⮞</Button>

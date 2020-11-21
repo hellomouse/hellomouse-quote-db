@@ -6,7 +6,7 @@ const addQuote = require('../src/add-quote.js');
 const db = require('../db/index.js');
 const config = require('../config.js');
 
-let router = express.Router();
+let router = new express.Router();
 
 
 /**
@@ -59,13 +59,13 @@ router.get('/get_quote/:id', function(req, res) {
   let id = req.params.id;
   let query = `SELECT * FROM ${config.db.table_name} where id = $1::int`;
 
-  db.query(query, [id], (err, db_res) => {
-    if (err || db_res.rows.length === 0) {
+  db.query(query, [id], (err, dbRes) => {
+    if (err || dbRes.rows.length === 0) {
       res.json({ success: false });
     } else {
-      db_res = db_res.rows[0];
-      db_res.success = true;
-      res.json(db_res);
+      dbRes = dbRes.rows[0];
+      dbRes.success = true;
+      res.json(dbRes);
     }
   });
 });
@@ -79,25 +79,25 @@ router.get('/get_quote_page/:page', function(req, res) {
      * To get quotes for a page, do
      * /get_quote/page */
   let page = +req.params.page - 1;
-  let start_id = page * config.quotes_per_page + 1;
-  let end_id = config.quotes_per_page * (page + 1) + 1;
+  let startId = page * config.quotes_per_page + 1;
+  let endId = config.quotes_per_page * (page + 1) + 1;
 
   let query = `SELECT * FROM ${config.db.table_name} where id >= $1 and id < $2`;
 
-  db.query(query, [start_id, end_id], (err, db_res) => {
-    if (err || db_res.rows.length === 0) {
+  db.query(query, [startId, endId], (err, dbRes) => {
+    if (err || dbRes.rows.length === 0) {
       res.json({ success: false });
     } else {
-      db_res = { quotes: db_res.rows };
-      db_res.success = true;
-      res.json(db_res);
+      dbRes = { quotes: dbRes.rows };
+      dbRes.success = true;
+      res.json(dbRes);
     }
   });
 });
 
 router.get('/num_pages/*', function(req, res) {
-  db.query(`SELECT count(*) AS exact_count FROM ${config.db.table_name};`, (err, db_res) => {
-    if (err || db_res.rows.length === 0) {
+  db.query(`SELECT count(*) AS exact_count FROM ${config.db.table_name};`, (err, dbRes) => {
+    if (err || dbRes.rows.length === 0) {
       res.json({
         success: false,
         count: 0,
@@ -106,8 +106,8 @@ router.get('/num_pages/*', function(req, res) {
     } else {
       res.json({
         success: true,
-        count: db_res.rows[0].exact_count,
-        last_page: 1 + Math.floor(db_res.rows[0].exact_count / config.quotes_per_page)
+        count: dbRes.rows[0].exact_count,
+        last_page: 1 + Math.floor(dbRes.rows[0].exact_count / config.quotes_per_page)
       });
     }
   });

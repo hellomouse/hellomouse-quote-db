@@ -12,13 +12,13 @@ const bodyParser = require('body-parser');
 const RateLimit = require('express-rate-limit');
 
 const config = require('./config.js');
-const quote_route = require('./routes/quote.js');
+const quoteRoute = require('./routes/quote.js');
 
 /* Server and app */
 const app = express();
 
 app.use(bodyParser.json({ limit: '4mb' }));
-app.use(quote_route);
+app.use(quoteRoute);
 
 let limiter = new RateLimit({
   windowMs: 2 * 60 * 1000,

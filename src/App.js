@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import Quote from './Quote.js';
 import AddQuoteModal from './AddQuoteModal.js';
 import DisplayQuote from './DisplayQuote.js';
 

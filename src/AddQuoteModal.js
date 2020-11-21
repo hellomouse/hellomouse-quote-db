@@ -14,7 +14,7 @@ class AddQuoteModal extends Component {
       success_msg: ''
     };
 
-    addQuote = () => {
+    addQuote() {
       fetch('/add_quote/', {
         method: 'POST',
         headers: {

@@ -57,7 +57,7 @@ export default function register() {
 }
 
 /**
- * @param swUrl
+ * @param {string} swUrl
  */
 function registerValidSW(swUrl) {
   navigator.serviceWorker
@@ -90,7 +90,7 @@ function registerValidSW(swUrl) {
 }
 
 /**
- * @param swUrl
+ * @param {string} swUrl
  */
 function checkValidServiceWorker(swUrl) {
   // Check if the service worker can be found. If it can't reload the page.
