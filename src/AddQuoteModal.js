@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 
-import 'material-components-web/dist/material-components-web.min.css';
 import './css/AddQuoteModal.css';
-import { Button, Textfield } from '@material-ui/core';
+import { Button, TextField } from '@material-ui/core';
 
 /** */
 class AddQuoteModal extends Component {
@@ -56,8 +55,8 @@ class AddQuoteModal extends Component {
             <div className='success'><b>Success: </b>{this.state.success_msg}</div>
           ) : ''}
 
-          <Textfield
-            floatingLabel="IRC Username"
+          <TextField
+            label="IRC Username"
             required
             value={this.state.username}
             onChange={({ target: { value: username } }) => {
@@ -69,8 +68,8 @@ class AddQuoteModal extends Component {
             }}
           />
 
-          <Textfield
-            floatingLabel="Channel"
+          <TextField
+            label="Channel"
             required
             value={this.state.channel}
             onChange={({ target: { value: channel } }) => {

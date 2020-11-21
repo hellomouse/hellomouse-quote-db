@@ -3,9 +3,8 @@ import React, { Component } from 'react';
 import AddQuoteModal from './AddQuoteModal.js';
 import DisplayQuote from './DisplayQuote.js';
 
-import 'material-components-web/dist/material-components-web.min.css';
 import './css/App.css';
-import { Toolbar, ToolbarRow, ToolbarTitle, ToolbarSection } from '@material-ui/core';
+import { AppBar, Toolbar, Typography } from '@material-ui/core';
 
 
 /** */
@@ -16,15 +15,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Toolbar fixed style={{ backgroundColor: '#333' }}>
-          <ToolbarRow>
-            <ToolbarSection align="start">
-              <ToolbarTitle>
-                <span role="img">💬</span> Hellomouse Quote DB
-              </ToolbarTitle>
-            </ToolbarSection>
-          </ToolbarRow>
-        </Toolbar>
+        <AppBar position="static" style={{ background: '#333' }}>
+          <Toolbar>
+            <Typography variant="h6">
+              <span role="img">💬</span> Hellomouse Quote DB
+            </Typography>
+          </Toolbar>
+        </AppBar>
 
         {document.location.href.includes('/add_quote') ? (
           <AddQuoteModal></AddQuoteModal>

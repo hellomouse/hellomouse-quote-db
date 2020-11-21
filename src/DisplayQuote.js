@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 
 import Quote from './Quote.js';
 
-import 'material-components-web/dist/material-components-web.min.css';
-import './css/App.css';
-import { Button, Fab, Icon } from 'react-mdc-web/lib';
+import { Button, Fab } from '@material-ui/core';
+import CreateIcon from '@material-ui/icons/Create';
 
 /** Component to display quotes */
 class DisplayQuote extends Component {
@@ -117,9 +116,11 @@ class DisplayQuote extends Component {
             </span>
           ) : ''}
 
-          <Fab style={{ position: 'fixed' }} onClick={() => {
+          <Fab color="secondary" style={{ position: 'fixed' }} onClick={() => {
             window.location.href = '/add_quote';
-          }}><Icon name='create'/></Fab>
+          }}>
+            <CreateIcon />
+          </Fab>
         </div>
       );
     }
