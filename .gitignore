@@ -73,3 +73,5 @@ out/*
 # DB password file
 db-password.txt
 ignored-folder/
+
+build/
