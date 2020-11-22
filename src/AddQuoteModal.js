@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import './css/AddQuoteModal.css';
 import { Button, TextField } from '@material-ui/core';
+import { withRouter } from 'react-router-dom';
 
 /** */
 class AddQuoteModal extends Component {
@@ -101,9 +102,7 @@ class AddQuoteModal extends Component {
           </div>
           <br/>
 
-          <Button onClick={() => {
-            window.history.back();
-          }}>CANCEL</Button>
+          <Button onClick={this.props.history.goBack}>CANCEL</Button>
           <Button onClick={this.addQuote}>ADD QUOTE</Button>
 
         </div>
@@ -111,4 +110,4 @@ class AddQuoteModal extends Component {
     }
 }
 
-export default AddQuoteModal;
+export default withRouter(AddQuoteModal);

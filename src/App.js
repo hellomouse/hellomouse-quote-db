@@ -6,6 +6,8 @@ import DisplayQuote from './DisplayQuote.js';
 import './css/App.css';
 import { AppBar, Toolbar, Typography } from '@material-ui/core';
 
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
 
 /** */
 class App extends Component {
@@ -23,14 +25,13 @@ class App extends Component {
           </Toolbar>
         </AppBar>
 
-        {document.location.href.includes('/add_quote') ? (
-          <AddQuoteModal></AddQuoteModal>
-        ) : (
-          <div>
-            <div style={{ height: '70px' }}></div>
-            <DisplayQuote></DisplayQuote>
-          </div>
-        )}
+        <CssBaseline />
+
+        <Router>
+          <Route exact path='/' component={DisplayQuote} />
+          <Route path={['/page_:rID', '/quote_:rID']} component={DisplayQuote} />
+          <Route exact path='/add_quote' component={AddQuoteModal} />
+        </Router>
       </div>
     );
   }

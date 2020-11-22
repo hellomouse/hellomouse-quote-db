@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './css/Quote.css';
 
 const formatDate = require('format-date');
@@ -33,7 +34,7 @@ class Quote extends Component {
             <span className='light right'>
               {formatDate('{month-name} {day}, {year} {hours}:{minutes}:{seconds}', new Date(this.state.timestamp))}
                             &nbsp; &nbsp;
-              <a href={'/quote_' + this.state.id }>Permalink</a>
+              <Link to={'/quote_' + this.state.id }>Permalink</Link>
             </span>
             <br></br>
           </small>

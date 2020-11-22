@@ -4,6 +4,7 @@ import Quote from './Quote.js';
 
 import { Button, Fab } from '@material-ui/core';
 import CreateIcon from '@material-ui/icons/Create';
+import { Link, RouteComponentProps, withRouter } from 'react-router-dom';
 
 /** Component to display quotes */
 class DisplayQuote extends Component {
@@ -126,4 +127,4 @@ class DisplayQuote extends Component {
     }
 }
 
-export default DisplayQuote;
+export default withRouter(DisplayQuote);
